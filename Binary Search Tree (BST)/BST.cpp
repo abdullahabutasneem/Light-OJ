@@ -15,6 +15,13 @@ struct BstNode
 	BstNode* right;
 };
 
+//Function to find minimum in a tree. 
+BstNode* FindMin(BstNode* root)
+{
+	while(root->left != NULL) root = root->left;
+	return root;
+}
+
 //To create new node in heap
 BstNode* GetNewNode(int data)
 {
@@ -23,6 +30,50 @@ BstNode* GetNewNode(int data)
 	newnode->left = newnode->right = NULL;
 	return newnode;
 }
+
+//Function to visit nodes in Inorder
+void Inorder(BstNode *root) {
+	if(root == NULL) return;
+ 
+	Inorder(root->left);       //Visit left subtree
+	printf("%d ",root->data);  //Print data
+	Inorder(root->right);      // Visit right subtree
+}
+
+//Function to Delete a node from BST
+struct BstNode* Delete(struct BstNode *root, int data)
+{
+	if(root==NULL)return root;
+	else if(data < root->data) root->left = Delete(root->left,data);
+	else if(data > root->data) root->right = Delete(root->right,data);
+	else
+	{
+		//No child
+		if(root->left==NULL and root->right==NULL){
+			delete root;
+			root = NULL;
+		}
+		//1 Children 
+		else if(root->left == NULL){
+			struct BstNode *temp = root;
+			root = root->right;
+			delete temp;
+		} 
+		else if(root->right == NULL){
+			struct BstNode *temp = root;
+			root = root->left;
+			delete temp;
+		}
+		//2 children
+		else
+		{
+			struct BstNode *temp = FindMin(root->right);
+			root->data = temp->data;
+			root->right = Delete(root->right,temp->data);
+		}
+	}
+	return root;
+} 
 
 // Insert the data in node
 BstNode* insert(BstNode* root, int data)
@@ -77,6 +128,11 @@ int main()
 	//If number is found, print "FOUND"
 	if(Search(root,x) == true) cout<<"Found\n";
 	else cout<<"Not Found\n";
+	int del;cin>>del;
+	root = Delete(root,del);
+	cout<<"Inorder: ";
+	Inorder(root);
+	cout<<endl;
 }
 
 ///Alhamdulillah
