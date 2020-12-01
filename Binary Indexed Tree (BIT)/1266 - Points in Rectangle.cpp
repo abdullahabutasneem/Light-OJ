@@ -125,9 +125,9 @@ int main()
         		a++;b++;c++;d++;
         		int ans;
         		ans=query(c,d);
-            	ans-=query(c,b-1);
-            	ans-=query(a-1,d);
-            	ans+=query(a-1,b-1);
+            		ans-=query(c,b-1);
+            		ans-=query(a-1,d);
+            		ans+=query(a-1,b-1);
         		pf("%d\n",ans);
         	}
         }
