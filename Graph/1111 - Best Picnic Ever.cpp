@@ -56,7 +56,7 @@ int dx4[] = {0, 0, 1, -1}; ///for 4 directions
 int dy4[] = {1, -1, 0, 0}; ///for 4 directions
 const int maxx=100005;
 
-//this fuction sorts vector pair according to first element in descending order.
+//this fuction sorts vector pair according to first element in descending order
 bool sortinrev(const pair<int,int> &a,const pair<int,int> &b)
 {
     return a.first>b.first;
