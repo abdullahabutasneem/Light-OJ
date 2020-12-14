@@ -105,21 +105,21 @@ void dijkstra(int s)
 		pii frnt = *mul.begin();
 		mul.erase(mul.begin());
 		int x = frnt.second;
-        int cst = frnt.first;
+        	int cst = frnt.first;
 		if(!vis[x]){
 			fo(i,edge[x].size()){
 				int nd = edge[x][i].first;
 				int w = edge[x][i].second;
-                int tot_cost=cst+w;
-                if(tot_cost<dis1[nd] and tot_cost<dis2[nd]){
-                    dis2[nd]=dis1[nd];
-                    dis1[nd]=tot_cost;
-                    mul.insert({dis1[nd],nd});
-                }
-                else if(tot_cost>dis1[nd] and tot_cost<dis2[nd]){
-                    dis2[nd]=tot_cost;
-                    mul.insert({dis2[nd],nd});
-                }
+				int tot_cost=cst+w;
+				if(tot_cost<dis1[nd] and tot_cost<dis2[nd]){
+				    dis2[nd]=dis1[nd];
+				    dis1[nd]=tot_cost;
+				    mul.insert({dis1[nd],nd});
+				}
+				else if(tot_cost>dis1[nd] and tot_cost<dis2[nd]){
+				    dis2[nd]=tot_cost;
+				    mul.insert({dis2[nd],nd});
+				}
 			}
 		}
 	}
