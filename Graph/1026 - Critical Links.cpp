@@ -44,7 +44,6 @@ const long long MOD = 1000000007;
 #define Inf INFINITY
 #define minv(v) *min_element(v.begin(),v.end())
 #define maxv(v) *max_element(v.begin(),v.end())
-#define cases(t) printf("Case %d:",t)
 #define PI acos(-1)
 #define uniq(vec) vec.resize(distance(vec.begin(),unique(vec.begin(),vec.end())))
 
