@@ -69,7 +69,6 @@ struct edge
 	int a,b,w;
 };
 
-//this fuction sorts vector pair according to first element in descending order.
 bool comp1(edge a, edge b)
 {
     return a.w<b.w;
